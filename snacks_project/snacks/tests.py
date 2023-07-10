@@ -1,19 +1,23 @@
-from django.test import TestCase
+from django.test import SimpleTestCase
 from django.urls import reverse
-
-class SnacksTests(TestCase):
-    def test_home_page_status_code(self):
-        response = self.client.get(reverse('home'))
-        self.assertEqual(response.status_code, 200)
-
-    def test_about_page_status_code(self):
-        response = self.client.get(reverse('about'))
+# Create your tests here.
+class SnacksTests(SimpleTestCase):
+    def test_home_page_status(self):
+        url = reverse('home')
+        response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
 
     def test_home_page_template(self):
-        response = self.client.get(reverse('home'))
-        self.assertTemplateUsed(response, 'snacks/home.html')
+        url = reverse('home')
+        response = self.client.get(url)
+        self.assertTemplateUsed(response,'home.html')
+
+    def test_about_page_status(self):
+        url = reverse('about')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
 
     def test_about_page_template(self):
-        response = self.client.get(reverse('about'))
-        self.assertTemplateUsed(response, 'snacks/about.html')
+        url = reverse('about')
+        response = self.client.get(url)
+        self.assertTemplateUsed(response,'about.html')
