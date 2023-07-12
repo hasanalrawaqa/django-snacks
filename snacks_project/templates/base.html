@@ -1,0 +1,28 @@
+{% load static %}
+
+
+<!-- base.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Django Snacks</title>
+    <link href="{% static 'css/reset.css' %}" rel="stylesheet">
+
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        
+            <a   href="{% url 'home' %}">Home</a></li>
+            <a  href="{% url 'about' %}">About</a></li>
+        
+        <div class="animation start-home"></div>
+
+    </nav>
+
+    <main  >
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>
